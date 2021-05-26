@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="navbar shadow sticky-top py-1 px-4 navbar-expand-lg navbar-light">
       <div className="container-fluid d-flex align-items-center mx-0 p-1 justify-content-between">
         <div>
-          <h3>ReportKeeper</h3>
+          <h3>LoanCreator</h3>
         </div>
         <div className="d-flex">
           <div className="collapse navbar-collapse" id="navbarToggler">
@@ -21,19 +21,19 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               className="nav-link"
-              to="/marks"
+              to="/addLoan"
               style={{ color: "#343a40" }}
               activeStyle={{ color: "#17a2b8" }}
             >
-              Enter New Record
+              Create New Loan
             </NavLink>
             <NavLink
               className="nav-link"
-              to="/leaderboard"
+              to="/allLoans"
               style={{ color: "#343a40" }}
               activeStyle={{ color: "#17a2b8" }}
             >
-              Leaderboard
+              View All Loans
             </NavLink>
           </div>
         </div>

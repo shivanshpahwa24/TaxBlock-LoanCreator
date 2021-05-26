@@ -8,12 +8,12 @@ const LoanSchema = mongoose.Schema({
   contact: {
     type: String,
     required: true,
-    unique: true,
+    /* unique: true, */
   },
   email: {
     type: String,
     required: true,
-    unique: true,
+    /* unique: true, */
   },
   address: {
     type: String,

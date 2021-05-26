@@ -6,14 +6,14 @@ const Landing = () => {
     <div className="landing">
       <div className="landing-container">
         <header className="landing-header">
-          <h1>ReportKeeper</h1>
+          <h1>LoanCreator</h1>
         </header>
         <div className="landing-main">
           <Link to="/addLoan" className="btn1">
-            Enter New Record
+            Create New Loan
           </Link>
           <Link to="/allLoans" className="btn1">
-            View Leaderboard
+            View All Loans
           </Link>
         </div>
       </div>

@@ -30,7 +30,7 @@ const Leaderboard = ({ getLoans, loans: { loans } }) => {
           columns={[
             {
               field: "name",
-              title: "Name",
+              title: "Applicant Name",
               cellStyle: {
                 color: "#575757",
               },
@@ -40,8 +40,8 @@ const Leaderboard = ({ getLoans, loans: { loans } }) => {
               },
             },
             {
-              field: "rollNo",
-              title: "Roll No.",
+              field: "contact",
+              title: "Contact No.",
               cellStyle: {
                 color: "#575757",
               },
@@ -51,8 +51,8 @@ const Leaderboard = ({ getLoans, loans: { loans } }) => {
               },
             },
             {
-              field: "maths",
-              title: "Maths",
+              field: "email",
+              title: "Email",
               cellStyle: {
                 color: "#575757",
               },
@@ -62,8 +62,8 @@ const Leaderboard = ({ getLoans, loans: { loans } }) => {
               },
             },
             {
-              field: "physics",
-              title: "Physics",
+              field: "address",
+              title: "Address",
               cellStyle: {
                 color: "#575757",
               },
@@ -73,8 +73,8 @@ const Leaderboard = ({ getLoans, loans: { loans } }) => {
               },
             },
             {
-              field: "chemistry",
-              title: "Chemistry",
+              field: "amount",
+              title: "Loan Amount",
               cellStyle: {
                 color: "#575757",
               },
@@ -84,8 +84,8 @@ const Leaderboard = ({ getLoans, loans: { loans } }) => {
               },
             },
             {
-              field: "total",
-              title: "Total",
+              field: "start",
+              title: "Start Date",
               cellStyle: {
                 color: "#575757",
               },
@@ -95,9 +95,21 @@ const Leaderboard = ({ getLoans, loans: { loans } }) => {
               },
             },
             {
-              field: "percentage",
-              title: "Percentage",
-              defaultSort: "desc",
+              field: "expiry",
+              title: "Expiry Date",
+
+              cellStyle: {
+                color: "#575757",
+              },
+              headerStyle: {
+                fontSize: "1.1rem",
+                fontWeight: "bold",
+              },
+            },
+            {
+              field: "EMI",
+              title: "EMI",
+
               cellStyle: {
                 color: "#575757",
               },

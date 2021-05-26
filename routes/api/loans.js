@@ -3,6 +3,7 @@ const router = express.Router();
 const Loan = require("../../models/Loan");
 const { check, validationResult } = require("express-validator");
 const { v4: uuid } = require("uuid");
+const moment = require("moment");
 
 // Get all loans
 router.get("/", async (req, res) => {
@@ -50,13 +51,17 @@ router.post(
     }
 
     let { contact, name, email, address, amount, start, expiry } = req.body;
-    var startDate = new Date(start);
-    var endDate = new Date(expiry);
+    let startDate = new Date(start);
+    let endDate = new Date(expiry);
     const msPerMonth = 1000 * 60 * 60 * 24 * 30;
     const diffInMonths = Math.floor(
       (endDate.getTime() - startDate.getTime()) / msPerMonth
     );
     const EMI = amount / diffInMonths;
+
+    startDate = moment(startDate).format("l");
+
+    endDate = moment(endDate).format("l");
 
     const newLoan = {
       contact,
@@ -64,8 +69,8 @@ router.post(
       email,
       address,
       amount,
-      start,
-      expiry,
+      start: startDate,
+      expiry: endDate,
       EMI,
     };
 
