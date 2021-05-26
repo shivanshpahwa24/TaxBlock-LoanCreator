@@ -1,26 +1,26 @@
 import axios from "axios";
 import { setAlert } from "./alert";
-import { VIEW_MARKS, MARKS_ERROR, ADD_MARKS } from "./types";
+import { VIEW_LOANS, LOAN_ERROR, ADD_LOAN } from "./types";
 
-//Get everybody's marks
-export const getMarks = () => async (dispatch) => {
+//Get everybody's loans
+export const getLoans = () => async (dispatch) => {
   try {
-    const res = await axios.get("/api/marks");
+    const res = await axios.get("/api/loans");
 
     dispatch({
-      type: VIEW_MARKS,
+      type: VIEW_LOANS,
       payload: res.data,
     });
   } catch (err) {
     dispatch({
-      type: MARKS_ERROR,
+      type: LOAN_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
 
-//Add marks for a new user
-export const addMarks = (formData, history) => async (dispatch) => {
+//Add new loan
+export const addLoans = (formData, history) => async (dispatch) => {
   try {
     const config = {
       headers: {
@@ -28,14 +28,14 @@ export const addMarks = (formData, history) => async (dispatch) => {
       },
     };
 
-    const res = await axios.post("/api/marks", formData, config);
+    const res = await axios.post("/api/loans", formData, config);
 
     dispatch({
-      type: ADD_MARKS,
+      type: ADD_LOAN,
       payload: res.data,
     });
 
-    dispatch(setAlert("Marks Added", "success"));
+    dispatch(setAlert("Loan Information Added", "success"));
 
     history.push("/leaderboard");
   } catch (err) {
@@ -46,7 +46,7 @@ export const addMarks = (formData, history) => async (dispatch) => {
     }
 
     dispatch({
-      type: MARKS_ERROR,
+      type: LOAN_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }

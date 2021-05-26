@@ -1,36 +1,36 @@
-import { VIEW_MARKS, MARKS_ERROR, ADD_MARKS } from "../actions/types";
+import { VIEW_LOANS, LOAN_ERROR, ADD_LOAN } from "../actions/types";
 
 const initialState = {
-  user: null,
-  users: [],
+  loan: null,
+  loans: [],
   loading: true,
   error: {},
 };
 
-export default function marks(state = initialState, action) {
+export default function loans(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case VIEW_MARKS:
+    case VIEW_LOANS:
       return {
         ...state,
-        users: payload,
+        loans: payload,
         loading: false,
       };
 
-    case ADD_MARKS:
+    case ADD_LOAN:
       return {
         ...state,
-        user: payload,
+        loan: payload,
         loading: false,
       };
 
-    case MARKS_ERROR:
+    case LOAN_ERROR:
       return {
         ...state,
         error: payload,
         loading: false,
-        user: null,
+        loan: null,
       };
 
     default:

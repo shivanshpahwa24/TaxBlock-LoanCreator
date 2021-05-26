@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
 import alert from "./alert";
-import marks from "./marks";
+import loans from "./loans";
 
-export default combineReducers({ alert, marks });
+export default combineReducers({ alert, loans });
