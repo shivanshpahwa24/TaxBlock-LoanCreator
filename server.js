@@ -11,7 +11,7 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 // Routes
-app.use("/api/marks", require("./routes/api/marks"));
+app.use("/api/loans", require("./routes/api/loans"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

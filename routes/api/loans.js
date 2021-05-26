@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../../models/User");
+const Loan = require("../../models/Loan");
 const { check, validationResult } = require("express-validator");
 const { v4: uuid } = require("uuid");
 
-// Get all users for leaderboard
+// Get all loans
 router.get("/", async (req, res) => {
   try {
-    const users = await User.findAll();
+    const loans = await Loan.find();
 
-    res.json(users);
+    res.json(loans);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -20,8 +20,10 @@ router.get("/", async (req, res) => {
 router.post(
   "/",
   [
-    check("rollNo", "Roll No. is required").not().isEmpty(),
+    check("contact", "Contact No. is required").not().isEmpty(),
     check("name", "Name is required").not().isEmpty(),
+    check("email", "Email is required").not().isEmpty(),
+    check("address", "Address is required").not().isEmpty(),
     check("maths")
       .not()
       .isEmpty()
