@@ -21,12 +21,13 @@ const LoanSchema = mongoose.Schema({
   },
   amount: {
     type: Number,
+    required: true,
   },
-  from: {
+  start: {
     type: Date,
     required: true,
   },
-  to: {
+  expiry: {
     type: Date,
     required: true,
   },

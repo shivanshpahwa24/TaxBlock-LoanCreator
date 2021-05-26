@@ -21,39 +21,27 @@ router.post(
   "/",
   [
     check("contact", "Contact No. is required").not().isEmpty(),
-    check("name", "Name is required").not().isEmpty(),
-    check("email", "Email is required").not().isEmpty(),
+    check("name", "Applicant Name is required").not().isEmpty(),
+    check("email")
+      .not()
+      .isEmpty()
+      .withMessage("Email Address is required")
+      .bail()
+      .isEmail()
+      .withMessage("Please enter a valid Email Address"),
     check("address", "Address is required").not().isEmpty(),
-    check("maths")
+    check("amount")
       .not()
       .isEmpty()
-      .withMessage("Maths Marks are required")
+      .withMessage("Loan Amount is required")
       .bail()
       .isNumeric()
-      .withMessage("Maths Marks should be a number")
+      .withMessage("Loan Amount must be a number")
       .bail()
-      .isInt({ min: 0, max: 100 })
-      .withMessage("Maths Marks should be between 0 and 100"),
-    check("physics")
-      .not()
-      .isEmpty()
-      .withMessage("Physics Marks are required")
-      .bail()
-      .isNumeric()
-      .withMessage("Physics Marks should be a number")
-      .bail()
-      .isInt({ min: 0, max: 100 })
-      .withMessage("Physics Marks should be between 0 and 100"),
-    check("chemistry")
-      .not()
-      .isEmpty()
-      .withMessage("Chemistry Marks are required")
-      .bail()
-      .isNumeric()
-      .withMessage("Chemistry Marks should be a number")
-      .bail()
-      .isInt({ min: 0, max: 100 })
-      .withMessage("Chemistry Marks should be between 0 and 100"),
+      .isInt({ min: 0 })
+      .withMessage("Loan Amount cannot be negative"),
+    check("start", "Loan Start Date is required").not().isEmpty(),
+    check("expiry", "Loan Expiry Date is required").not().isEmpty(),
   ],
   async (req, res) => {
     const errors = validationResult(req); //Check for any errors
@@ -61,34 +49,49 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    let { rollNo, name, maths, physics, chemistry } = req.body;
+    let { contact, name, email, address, amount, start, expiry } = req.body;
+    var startDate = new Date(start);
+    var endDate = new Date(expiry);
+    const msPerMonth = 1000 * 60 * 60 * 24 * 30;
+    const diffInMonths = Math.floor(
+      (endDate.getTime() - startDate.getTime()) / msPerMonth
+    );
+    const EMI = amount / diffInMonths;
 
-    const total = parseInt(maths) + parseInt(physics) + parseInt(chemistry);
-    const percentage = (total / 3).toFixed(2) + "%";
-    const id = uuid();
+    const newLoan = {
+      contact,
+      name,
+      email,
+      address,
+      amount,
+      start,
+      expiry,
+      EMI,
+    };
 
     try {
-      //See if User exists
-      let user = await User.findOne({ where: { rollNo } });
+      /* //See if same user exists
+      let user = await Loan.findOne({ email });
       if (user) {
         return res
           .status(400)
-          .json({ errors: [{ msg: "Roll No. already exists" }] });
+          .json({ errors: [{ msg: "Email already exists" }] });
       }
 
-      // Insert into table
-      user = await User.create({
-        id,
-        rollNo,
-        name,
-        maths,
-        physics,
-        chemistry,
-        total,
-        percentage,
-      });
+      user = await Loan.findOne({ email });
+      if (user) {
+        return res
+          .status(400)
+          .json({ errors: [{ msg: "Email already exists" }] });
+      } */
 
-      res.json(user);
+      // Insert into table
+      const loan = new Loan(newLoan);
+
+      await loan.save();
+      console.log("New Loan Added");
+
+      res.json(loan);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");
