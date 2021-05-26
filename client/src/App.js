@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Landing from "./Pages/Landing";
 import Leaderboard from "./Pages/Leaderboard";
-import Marks from "./Pages/Marks";
+import AddLoan from "./Pages/AddLoan";
 import Alert from "./components/Alert";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -19,8 +19,8 @@ function App() {
             <div className="alert-container">
               <Alert />
             </div>
-            <Route exact path="/marks" component={Marks} />
-            <Route exact path="/leaderboard" component={Leaderboard} />
+            <Route exact path="/addLoan" component={AddLoan} />
+            <Route exact path="/allLoans" component={Leaderboard} />
           </>
         </Switch>
       </Router>

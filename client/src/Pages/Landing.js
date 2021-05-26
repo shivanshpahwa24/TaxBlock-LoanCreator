@@ -9,10 +9,10 @@ const Landing = () => {
           <h1>ReportKeeper</h1>
         </header>
         <div className="landing-main">
-          <Link to="/marks" className="btn1">
+          <Link to="/addLoan" className="btn1">
             Enter New Record
           </Link>
-          <Link to="/leaderboard" className="btn1">
+          <Link to="/allLoans" className="btn1">
             View Leaderboard
           </Link>
         </div>

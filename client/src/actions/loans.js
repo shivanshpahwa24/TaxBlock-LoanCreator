@@ -20,7 +20,7 @@ export const getLoans = () => async (dispatch) => {
 };
 
 //Add new loan
-export const addLoans = (formData, history) => async (dispatch) => {
+export const addLoan = (formData, history) => async (dispatch) => {
   try {
     const config = {
       headers: {
@@ -37,7 +37,7 @@ export const addLoans = (formData, history) => async (dispatch) => {
 
     dispatch(setAlert("Loan Information Added", "success"));
 
-    history.push("/leaderboard");
+    history.push("/allLoans");
   } catch (err) {
     const errors = err.response.data.errors;
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getMarks } from "../actions/marks";
+import { getLoans } from "../actions/loans";
 import MaterialTable from "material-table";
 import { forwardRef } from "react";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
@@ -17,11 +17,11 @@ const tableIcons = {
   SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref} />),
 };
 
-const Leaderboard = ({ getMarks, marks: { users } }) => {
+const Leaderboard = ({ getLoans, loans: { loans } }) => {
   useEffect(() => {
     //So that all the data is already filled as soon as the page loads
-    getMarks();
-  }, [getMarks]);
+    getLoans();
+  }, [getLoans]);
   return (
     <div className="leaderboard">
       <div className="leaderboard-container">
@@ -107,7 +107,7 @@ const Leaderboard = ({ getMarks, marks: { users } }) => {
               },
             },
           ]}
-          data={users}
+          data={loans}
           title={
             <h4
               style={{
@@ -133,10 +133,10 @@ const Leaderboard = ({ getMarks, marks: { users } }) => {
 };
 
 Leaderboard.propTypes = {
-  getMarks: PropTypes.func.isRequired,
-  marks: PropTypes.object.isRequired,
+  getLoans: PropTypes.func.isRequired,
+  loans: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({ marks: state.marks });
+const mapStateToProps = (state) => ({ loans: state.loans });
 
-export default connect(mapStateToProps, { getMarks })(Leaderboard);
+export default connect(mapStateToProps, { getLoans })(Leaderboard);
