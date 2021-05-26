@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+:root {
+  --primary-color: #17a2b8;
+  --dark-color: #343a40;
+  --dark-color-a: #575757;
+  --dark-color-b: #1cb8a9;
+  --light-color: #e3fff8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-display: swap;
+  color: var(--dark-color);
+  background-image: url("./assets/background.svg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.navbar {
+  min-height: 10vh;
+  background-color: white;
+}
+.navbar h3 {
+  color: var(--dark-color-a);
+}
+.navbar .nav-link {
+  color: var(--dark-color-a);
+}
+.alert-container {
+  width: 80%;
+  margin: 0 auto;
+  position: absolute;
+  left: 10%;
+}
+.alert-container .alert {
+  margin-top: 1rem;
+}
+
+.landing {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-container {
+  max-width: 500px;
+  color: #fff;
+  margin: 1rem;
+  min-width: 400px;
+}
+
+.landing-header {
+  text-align: center;
+  padding: 20px;
+  background: var(--dark-color-a);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.landing-main {
+  padding: 30px 40px;
+  background: var(--dark-color-b);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.landing-main .btn1 {
+  display: block;
+  cursor: pointer;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  background: var(--light-color);
+  color: var(--dark-color-a);
+  width: 100%;
+  text-align: center;
+  border-radius: 1.5rem;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.marks {
+  height: 90vh;
+  width: 100%;
+  color: var(--dark-color-a);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.marks-container {
+  width: 40%;
+}
+.marks .form-group {
+  margin: 0.5rem 0;
+}
+
+.leaderboard {
+  min-height: 90vh;
+  width: 100vw;
+  color: var(--dark-color-a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.leaderboard-container {
+  width: 70%;
+  background-color: white;
+  border-radius: 5px;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .marks-container {
+    width: 60%;
+  }
+  .leaderboard-container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 576px) {
+  .marks-container {
+    width: 70%;
+  }
+}
