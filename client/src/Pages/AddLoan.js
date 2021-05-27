@@ -37,8 +37,8 @@ const AddLoan = ({ addLoan, history }) => {
   };
 
   return (
-    <div className="marks">
-      <div className="marks-container">
+    <div className="add-loan">
+      <div className="add-loan-container">
         <h2 className="mb-1">Enter Your Information</h2>
 
         <form className="form" onSubmit={handleSubmit}>

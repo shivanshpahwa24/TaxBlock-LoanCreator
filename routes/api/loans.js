@@ -59,9 +59,9 @@ router.post(
     );
     const EMI = amount / diffInMonths;
 
-    startDate = moment(startDate).format("l");
+    startDate = moment(startDate).format("Do MMMM YYYY");
 
-    endDate = moment(endDate).format("l");
+    endDate = moment(endDate).format("Do MMMM YYYY");
 
     const newLoan = {
       contact,

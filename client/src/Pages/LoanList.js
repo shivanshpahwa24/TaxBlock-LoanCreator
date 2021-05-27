@@ -17,14 +17,14 @@ const tableIcons = {
   SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref} />),
 };
 
-const Leaderboard = ({ getLoans, loans: { loans } }) => {
+const LoanList = ({ getLoans, loans: { loans } }) => {
   useEffect(() => {
     //So that all the data is already filled as soon as the page loads
     getLoans();
   }, [getLoans]);
   return (
-    <div className="leaderboard">
-      <div className="leaderboard-container">
+    <div className="loan-list">
+      <div className="loan-list-container">
         <MaterialTable
           icons={tableIcons}
           columns={[
@@ -129,7 +129,7 @@ const Leaderboard = ({ getLoans, loans: { loans } }) => {
                 fontWeight: "bold",
               }}
             >
-              Leaderboard
+              LoanList
             </h4>
           }
           options={{
@@ -144,11 +144,11 @@ const Leaderboard = ({ getLoans, loans: { loans } }) => {
   );
 };
 
-Leaderboard.propTypes = {
+LoanList.propTypes = {
   getLoans: PropTypes.func.isRequired,
   loans: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({ loans: state.loans });
 
-export default connect(mapStateToProps, { getLoans })(Leaderboard);
+export default connect(mapStateToProps, { getLoans })(LoanList);

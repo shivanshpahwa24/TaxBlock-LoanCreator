@@ -86,7 +86,7 @@ body {
   font-size: 1.2rem;
 }
 
-.marks {
+.add-loan {
   height: 90vh;
   width: 100%;
   color: var(--dark-color-a);
@@ -95,14 +95,14 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.marks-container {
+.add-loan-container {
   width: 40%;
 }
-.marks .form-group {
+.add-loan .form-group {
   margin: 0.5rem 0;
 }
 
-.leaderboard {
+.loan-list {
   min-height: 90vh;
   width: 100vw;
   color: var(--dark-color-a);
@@ -110,24 +110,24 @@ body {
   justify-content: center;
   align-items: center;
 }
-.leaderboard-container {
+.loan-list-container {
   width: 70%;
   background-color: white;
   border-radius: 5px;
   border: none;
 }
 
-@media (max-width: 768px) {
-  .marks-container {
+@media (max-width: 1300px) {
+  .add-loan-container {
     width: 60%;
   }
-  .leaderboard-container {
+  .loan-list-container {
     width: 90%;
   }
 }
 
 @media (max-width: 576px) {
-  .marks-container {
+  .add-loan-container {
     width: 70%;
   }
 }

@@ -8,12 +8,10 @@ const LoanSchema = mongoose.Schema({
   contact: {
     type: String,
     required: true,
-    /* unique: true, */
   },
   email: {
     type: String,
     required: true,
-    /* unique: true, */
   },
   address: {
     type: String,
@@ -24,11 +22,11 @@ const LoanSchema = mongoose.Schema({
     required: true,
   },
   start: {
-    type: Date,
+    type: String,
     required: true,
   },
   expiry: {
-    type: Date,
+    type: String,
     required: true,
   },
   EMI: {
