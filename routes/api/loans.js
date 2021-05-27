@@ -17,12 +17,48 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Get loans by user's contact no.
+router.get(
+  "/:contact",
+  [
+    check("contact")
+      .not()
+      .isEmpty()
+      .withMessage("Contact no. is required")
+      .bail()
+      .isNumeric()
+      .withMessage("Contact no. must be a number"),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req); //Check for any errors
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    try {
+      const loans = await Loan.find({ contact: req.params.contact }).sort({
+        date: -1,
+      });
+
+      res.json(loans);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  }
+);
+
 // Add a user marks
 router.post(
   "/",
   [
-    check("contact", "Contact No. is required").not().isEmpty(),
     check("name", "Applicant Name is required").not().isEmpty(),
+    check("contact")
+      .not()
+      .isEmpty()
+      .withMessage("Contact no. is required")
+      .bail()
+      .isNumeric()
+      .withMessage("Contact no. must be a number"),
     check("email")
       .not()
       .isEmpty()
@@ -75,22 +111,7 @@ router.post(
     };
 
     try {
-      /* //See if same user exists
-      let user = await Loan.findOne({ email });
-      if (user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "Email already exists" }] });
-      }
-
-      user = await Loan.findOne({ email });
-      if (user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "Email already exists" }] });
-      } */
-
-      // Insert into table
+      // Insert into db
       const loan = new Loan(newLoan);
 
       await loan.save();

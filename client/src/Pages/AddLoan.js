@@ -24,6 +24,7 @@ const AddLoan = ({ addLoan, history }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     addLoan(formData, history);
+
     setFormData({
       ...formData,
       contact: "",
@@ -92,9 +93,9 @@ const AddLoan = ({ addLoan, history }) => {
               onChange={onChange}
             />
           </div>
-          <div class="input-group form-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Start Date</span>
+          <div className="input-group form-group">
+            <div className="input-group-prepend">
+              <span className="input-group-text">Start Date</span>
             </div>
             <input
               type="date"
@@ -105,9 +106,9 @@ const AddLoan = ({ addLoan, history }) => {
               onChange={onChange}
             />
           </div>
-          <div class="input-group form-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Expiry Date</span>
+          <div className="input-group form-group">
+            <div className="input-group-prepend">
+              <span className="input-group-text">Expiry Date</span>
             </div>
             <input
               type="date"

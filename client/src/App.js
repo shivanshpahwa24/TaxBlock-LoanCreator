@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Landing from "./Pages/Landing";
+import ViewLoan from "./Pages/ViewLoan";
 import LoanList from "./Pages/LoanList";
 import AddLoan from "./Pages/AddLoan";
 import Alert from "./components/Alert";
@@ -20,7 +21,8 @@ function App() {
               <Alert />
             </div>
             <Route exact path="/addLoan" component={AddLoan} />
-            <Route exact path="/allLoans" component={LoanList} />
+            <Route exact path="/viewLoans" component={ViewLoan} />
+            <Route exact path="/loanList" component={LoanList} />
           </>
         </Switch>
       </Router>

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const ViewLoan = ({ viewLoan, history }) => {
-  const { contact, setContact } = useState("");
+  const [contact, setContact] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,6 +29,7 @@ const ViewLoan = ({ viewLoan, history }) => {
               name="contact"
               value={contact}
               onChange={(e) => setContact(e.target.value)}
+              required
             />
           </div>
 

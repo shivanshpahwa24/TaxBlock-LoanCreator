@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getLoans } from "../actions/loans";
 import MaterialTable from "material-table";
 import { forwardRef } from "react";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
@@ -17,11 +16,7 @@ const tableIcons = {
   SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref} />),
 };
 
-const LoanList = ({ getLoans, loans: { loans } }) => {
-  useEffect(() => {
-    //So that all the data is already filled as soon as the page loads
-    getLoans();
-  }, [getLoans]);
+const LoanList = ({ loans: { loans } }) => {
   return (
     <div className="loan-list">
       <div className="loan-list-container">
@@ -136,7 +131,7 @@ const LoanList = ({ getLoans, loans: { loans } }) => {
             search: true,
             sorting: true,
             paging: false,
-            maxBodyHeight: 400,
+            maxBodyHeight: 500,
           }}
         />
       </div>
@@ -145,10 +140,9 @@ const LoanList = ({ getLoans, loans: { loans } }) => {
 };
 
 LoanList.propTypes = {
-  getLoans: PropTypes.func.isRequired,
   loans: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({ loans: state.loans });
 
-export default connect(mapStateToProps, { getLoans })(LoanList);
+export default connect(mapStateToProps)(LoanList);

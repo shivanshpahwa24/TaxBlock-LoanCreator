@@ -29,11 +29,11 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               className="nav-link"
-              to="/allLoans"
+              to="/viewLoans"
               style={{ color: "#343a40" }}
               activeStyle={{ color: "#17a2b8" }}
             >
-              View All Loans
+              View Your Loans
             </NavLink>
           </div>
         </div>

@@ -19,6 +19,30 @@ export const getLoans = () => async (dispatch) => {
   }
 };
 
+//Get your loans
+export const viewLoan = (contact, history) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/loans/${contact}`);
+
+    dispatch({
+      type: VIEW_LOANS,
+      payload: res.data,
+    });
+
+    history.push("/loanList");
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+    dispatch({
+      type: LOAN_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
 //Add new loan
 export const addLoan = (formData, history) => async (dispatch) => {
   try {
@@ -35,9 +59,18 @@ export const addLoan = (formData, history) => async (dispatch) => {
       payload: res.data,
     });
 
+    const { contact } = formData;
+
     dispatch(setAlert("Loan Information Added", "success"));
 
-    history.push("/allLoans");
+    const res2 = await axios.get(`/api/loans/${contact}`);
+
+    dispatch({
+      type: VIEW_LOANS,
+      payload: res2.data,
+    });
+
+    history.push("/loanList");
   } catch (err) {
     const errors = err.response.data.errors;
 
