@@ -4,8 +4,8 @@ The application fulfils all the requirements that were mentioned by the team Tax
 
 **API endpoints :-**
 
-GET : https://almabetter-reportkeeper.herokuapp.com/api/loans - For getting all the loan applications from the database
+GET : https://taxblock-loan.herokuapp.com/api/loans - For getting all the loan applications from the database
 
-GET : https://almabetter-reportkeeper.herokuapp.com/api/loans/:contact - For getting all the loan applications with the contact no. provided in the url from the database
+GET : https://taxblock-loan.herokuapp.com/api/loans/:contact - For getting all the loan applications with the contact no. provided in the url from the database
 
-POST : https://almabetter-reportkeeper.herokuapp.com/api/loans - For posting a new loan application to the database
+POST : https://taxblock-loan.herokuapp.com/api/loans - For posting a new loan application to the database
