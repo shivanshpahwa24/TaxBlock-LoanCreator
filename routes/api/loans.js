@@ -79,9 +79,13 @@ router.post(
       .withMessage("Loan Amount cannot be negative"),
     check("start", "Loan Start Date is required").not().isEmpty(),
     check("expiry", "Loan Expiry Date is required").not().isEmpty(),
+    check("expiry")
+      .isAfter("start")
+      .withMessage("Expiry Date cannot be before the Start Date"),
   ],
   async (req, res) => {
     const errors = validationResult(req); //Check for any errors
+
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
@@ -89,6 +93,7 @@ router.post(
     let { contact, name, email, address, amount, start, expiry } = req.body;
     let startDate = new Date(start);
     let endDate = new Date(expiry);
+
     const msPerMonth = 1000 * 60 * 60 * 24 * 30;
     const diffInMonths = Math.floor(
       (endDate.getTime() - startDate.getTime()) / msPerMonth
